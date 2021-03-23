@@ -3,6 +3,8 @@ package io.yunplusplus.transaction.config;
 
 import org.apache.rocketmq.client.producer.TransactionListener;
 import org.apache.rocketmq.client.producer.TransactionMQProducer;
+import org.apache.rocketmq.remoting.RPCHook;
+import org.apache.rocketmq.remoting.protocol.RemotingCommand;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.HashMap;

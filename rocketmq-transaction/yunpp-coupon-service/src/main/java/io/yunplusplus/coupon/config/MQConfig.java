@@ -1,5 +1,7 @@
 package io.yunplusplus.coupon.config;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -35,8 +37,9 @@ public class MQConfig {
 
     @Bean
     public DefaultMQPushConsumer defaultMQPushConsumer() {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup);
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(consumerGroup, true);
         consumer.setNamesrvAddr(namesrvAddr);
+        consumer.setConsumeTimestamp(DateFormatUtils.format(System.currentTimeMillis(), "yyyyMMddHHmmss"));
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         consumer.registerMessageListener(couponMessageListenerConcurrently);
         try {
