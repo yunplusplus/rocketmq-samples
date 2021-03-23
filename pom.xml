@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>rocketmq-transaction</module>
+        <module>rocketmq-test</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
